@@ -1,0 +1,69 @@
+# La-lettre-de-Macc-o
+Newsletter 
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Formulaire</title>
+    <style>
+        /* Style simple pour centrer le contenu */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Style du bouton */
+        .btn-formulaire {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-formulaire:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cacher le formulaire par défaut */
+        #container-formulaire {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-formulaire" id="showBtn">Accéder au formulaire</button>
+
+    <div id="container-formulaire">
+        <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 500px; border:none;"></iframe>
+    </div>
+
+    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+
+    <script>
+        const btn = document.getElementById('showBtn');
+        const formContainer = document.getElementById('container-formulaire');
+
+        btn.addEventListener('click', function() {
+            formContainer.style.display = 'block'; // Affiche le formulaire
+            btn.style.display = 'none';           // Cache le bouton après le clic
+        });
+    </script>
+
+</body>
+</html>
