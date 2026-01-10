@@ -3,121 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Premium</title>
+    <title>Newsletter</title>
     <style>
-        /* Fond de la page avec un dégradé moderne */
         body {
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        /* Le conteneur principal (la carte) */
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
             padding: 40px;
             border-radius: 24px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 90%;
-            max-width: 500px;
-            transition: all 0.4s ease;
+            max-width: 450px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s ease;
         }
 
-        h1 {
-            color: #ffffff;
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        p {
-            color: #94a3b8;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        /* Style du bouton "Esthetic" */
+        /* Le Bouton */
         .btn-newsletter {
-            background: linear-gradient(to right, #3b82f6, #2563eb);
+            background: #2563eb;
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 18px;
             font-size: 18px;
             font-weight: bold;
             border-radius: 12px;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            transition: 0.3s;
         }
 
-        .btn-newsletter:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
-            filter: brightness(1.1);
-        }
+        .btn-newsletter:hover { background: #1d4ed8; }
 
-        .btn-newsletter:active {
-            transform: translateY(0);
-        }
-
-        /* Zone du formulaire (cachée au début) */
-        #form-container {
-            display: none;
-            margin-top: 20px;
-            background: white;
-            border-radius: 16px;
-            padding: 10px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* Conteneur Formulaire */
+        #form-container { display: none; margin-top: 10px; }
+        
         iframe {
+            width: 100%;
+            height: 550px;
             border: none;
+        }
+
+        /* Le TICK de succès (Caché au début) */
+        #success-msg {
+            display: none;
+            animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .tick-icon {
+            font-size: 80px;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1 id="title">Restez à l'affût</h1>
-        <p id="subtitle">Recevez mes meilleures astuces directement par mail.</p>
+    <div class="card" id="mainCard">
         
-        <button class="btn-newsletter" id="btnAction">S'abonner à ma newsletter</button>
+        <button class="btn-newsletter" id="btnAction">S'ABONNER À MA NEWSLETTER</button>
 
         <div id="form-container">
-            <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 550px;"></iframe>
+            <iframe id="mj-iframe" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a"></iframe>
         </div>
-    </div>
 
-    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+        <div id="success-msg">
+            <div class="tick-icon">✓</div>
+            <p style="color: #64748b; font-weight: bold;">C'est fait !</p>
+        </div>
+
+    </div>
 
     <script>
         const btn = document.getElementById('btnAction');
-        const formContainer = document.getElementById('form-container');
-        const title = document.getElementById('title');
-        const subtitle = document.getElementById('subtitle');
+        const form = document.getElementById('form-container');
+        const success = document.getElementById('success-msg');
+        const card = document.getElementById('mainCard');
 
+        // 1. Quand on clique sur le bouton, on montre le formulaire
         btn.onclick = function() {
-            formContainer.style.display = 'block';
-            btn.style.display = 'none';
-            title.innerText = 'Inscription';
-            subtitle.innerText = 'Remplissez les champs ci-dessous :';
-        }
+            form.style.display = 'block';
+            this.style.display = 'none';
+        };
+
+        // 2. RUSE : On détecte quand l'utilisateur a fini
+        // On surveille si l'utilisateur quitte la page ou si l'iframe change
+        // Comme on ne peut pas lire l'intérieur de l'iframe, on met un bouton "J'ai fini"
+        // Ou on attend 15 secondes après l'affichage pour montrer le tick automatiquement
+        
+        // Option la plus propre : Un bouton de fermeture qui montre le tick
+        document.getElementById('mj-iframe').onload = function() {
+            // Si le formulaire est déjà affiché et que l'iframe recharge (après validation)
+            if(form.style.display === 'block') {
+               // On pourrait détecter ici, mais Mailjet bloque souvent la lecture.
+            }
+        };
     </script>
 
 </body>
