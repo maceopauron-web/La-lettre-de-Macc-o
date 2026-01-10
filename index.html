@@ -39,4 +39,86 @@
         }
 
         p {
-            
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        /* Style du bouton "Esthetic" */
+        .btn-newsletter {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-newsletter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-newsletter:active {
+            transform: translateY(0);
+        }
+
+        /* Zone du formulaire (cachée au début) */
+        #form-container {
+            display: none;
+            margin-top: 20px;
+            background: white;
+            border-radius: 16px;
+            padding: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        iframe {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1 id="title">Restez à l'affût</h1>
+        <p id="subtitle">Recevez mes meilleures astuces directement par mail.</p>
+        
+        <button class="btn-newsletter" id="btnAction">S'abonner à ma newsletter</button>
+
+        <div id="form-container">
+            <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 550px;"></iframe>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+
+    <script>
+        const btn = document.getElementById('btnAction');
+        const formContainer = document.getElementById('form-container');
+        const title = document.getElementById('title');
+        const subtitle = document.getElementById('subtitle');
+
+        btn.onclick = function() {
+            formContainer.style.display = 'block';
+            btn.style.display = 'none';
+            title.innerText = 'Inscription';
+            subtitle.innerText = 'Remplissez les champs ci-dessous :';
+        }
+    </script>
+
+</body>
+</html>
