@@ -3,96 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Premium</title>
+    <title>Newsletter</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            font-family: sans-serif;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
             padding: 30px;
-            border-radius: 24px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Empêche les débordements */
         }
 
-        h1 { color: #ffffff; margin-bottom: 20px; font-weight: 600; }
-
         .btn-newsletter {
-            background: linear-gradient(to right, #3b82f6, #2563eb);
+            background: #2563eb;
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 18px;
             font-size: 18px;
             font-weight: bold;
             border-radius: 12px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .btn-newsletter:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        /* AJUSTEMENT ICI : On force une largeur minimale pour éviter le texte vertical */
+        /* LA CORRECTION EST ICI */
         #form-container {
             display: none;
-            margin-top: 20px;
-            background: white;
-            border-radius: 16px;
-            padding: 15px;
-            min-height: 450px; /* Assure que le message de succès a de la place */
-            width: 100%;
-            box-sizing: border-box;
+            width: 100% !important;
+            min-width: 100% !important;
+            margin-top: 10px;
         }
 
         iframe {
-            border: none;
             width: 100% !important;
-            min-width: 100%;
+            min-width: 100% !important;
+            height: 550px;
+            border: none;
+            display: block;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1 id="title">S'abonner à ma newsletter</h1>
-        
-        <button class="btn-newsletter" id="btnAction">Rejoindre maintenant</button>
+        <button class="btn-newsletter" id="btnAction">S'ABONNER À MA NEWSLETTER</button>
 
         <div id="form-container">
-            <iframe data-w-type="embedded" frameborder="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 500px;"></iframe>
+            <iframe src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%"></iframe>
         </div>
     </div>
 
-    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
-
     <script>
-        const btn = document.getElementById('btnAction');
-        const formContainer = document.getElementById('form-container');
-        const title = document.getElementById('title');
-
-        btn.onclick = function() {
-            formContainer.style.display = 'block';
-            btn.style.display = 'none';
-            title.style.display = 'none'; // On cache le titre pour laisser plus de place
-        }
+        document.getElementById('btnAction').onclick = function() {
+            document.getElementById('form-container').style.display = 'block';
+            this.style.display = 'none';
+        };
     </script>
 
 </body>
