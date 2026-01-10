@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter Premium</title>
     <style>
-        /* Fond de la page avec un dégradé moderne */
         body {
             margin: 0;
             padding: 0;
@@ -14,37 +13,23 @@
             align-items: center;
             min-height: 100vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Le conteneur principal (la carte) */
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 30px;
             border-radius: 24px;
             text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 90%;
             max-width: 500px;
-            transition: all 0.4s ease;
         }
 
-        h1 {
-            color: #ffffff;
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
+        h1 { color: #ffffff; margin-bottom: 20px; font-weight: 600; }
 
-        p {
-            color: #94a3b8;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        /* Style du bouton "Esthetic" */
         .btn-newsletter {
             background: linear-gradient(to right, #3b82f6, #2563eb);
             color: white;
@@ -55,52 +40,44 @@
             border-radius: 12px;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
         }
 
         .btn-newsletter:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
-            filter: brightness(1.1);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .btn-newsletter:active {
-            transform: translateY(0);
-        }
-
-        /* Zone du formulaire (cachée au début) */
+        /* AJUSTEMENT ICI : On force une largeur minimale pour éviter le texte vertical */
         #form-container {
             display: none;
             margin-top: 20px;
             background: white;
             border-radius: 16px;
-            padding: 10px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            padding: 15px;
+            min-height: 450px; /* Assure que le message de succès a de la place */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         iframe {
             border: none;
+            width: 100% !important;
+            min-width: 100%;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1 id="title">Restez à l'affût</h1>
-        <p id="subtitle">Recevez mes meilleures astuces directement par mail.</p>
+        <h1 id="title">S'abonner à ma newsletter</h1>
         
-        <button class="btn-newsletter" id="btnAction">S'abonner à ma newsletter</button>
+        <button class="btn-newsletter" id="btnAction">Rejoindre maintenant</button>
 
         <div id="form-container">
-            <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 550px;"></iframe>
+            <iframe data-w-type="embedded" frameborder="0" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" style="height: 500px;"></iframe>
         </div>
     </div>
 
@@ -110,13 +87,11 @@
         const btn = document.getElementById('btnAction');
         const formContainer = document.getElementById('form-container');
         const title = document.getElementById('title');
-        const subtitle = document.getElementById('subtitle');
 
         btn.onclick = function() {
             formContainer.style.display = 'block';
             btn.style.display = 'none';
-            title.innerText = 'Inscription';
-            subtitle.innerText = 'Remplissez les champs ci-dessous :';
+            title.style.display = 'none'; // On cache le titre pour laisser plus de place
         }
     </script>
 
