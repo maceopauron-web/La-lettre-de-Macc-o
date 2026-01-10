@@ -5,110 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter</title>
     <style>
+        /* Design global de la page */
         body {
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #0f172a;
-            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
         }
 
-        .card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 24px;
+        .container {
             text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             width: 90%;
-            max-width: 450px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-            transition: all 0.5s ease;
+            max-width: 500px;
         }
 
-        /* Le Bouton */
+        h1 { margin-bottom: 20px; font-weight: 300; }
+
+        /* Style du bouton moderne */
         .btn-newsletter {
-            background: #2563eb;
+            background-color: #ff4757;
             color: white;
             border: none;
-            padding: 18px;
-            font-size: 18px;
+            padding: 18px 35px;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 12px;
+            border-radius: 50px;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             width: 100%;
-            transition: 0.3s;
         }
 
-        .btn-newsletter:hover { background: #1d4ed8; }
-
-        /* Conteneur Formulaire */
-        #form-container { display: none; margin-top: 10px; }
-        
-        iframe {
-            width: 100%;
-            height: 550px;
-            border: none;
+        .btn-newsletter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+            background-color: #ff6b81;
         }
 
-        /* Le TICK de succès (Caché au début) */
-        #success-msg {
+        /* Message d'info sous le bouton */
+        .info-mail {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+        }
+
+        /* Conteneur du formulaire caché */
+        #form-wrapper {
             display: none;
-            animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 20px;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            overflow: hidden;
         }
 
-        .tick-icon {
-            font-size: 80px;
-            color: #22c55e;
-            margin-bottom: 10px;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        iframe {
+            width: 100% !important;
+            min-width: 100% !important;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="card" id="mainCard">
+    <div class="container">
+        <h1 id="title">Restez informé !</h1>
         
-        <button class="btn-newsletter" id="btnAction">S'ABONNER À MA NEWSLETTER</button>
-
-        <div id="form-container">
-            <iframe id="mj-iframe" src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a"></iframe>
+        <div id="cta-section">
+            <button class="btn-newsletter" id="btnAction">S'abonner à la newsletter</button>
+            <p class="info-mail">
+                Vous allez recevoir un mail, cliquez sur <strong>confirmer</strong> pour valider votre inscription.
+            </p>
         </div>
 
-        <div id="success-msg">
-            <div class="tick-icon">✓</div>
-            <p style="color: #64748b; font-weight: bold;">C'est fait !</p>
+        <div id="form-wrapper">
+            <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zrm/form?c=ac70ec91" width="100%" style="height: 550px;"></iframe>
         </div>
-
     </div>
 
+    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+    
     <script>
         const btn = document.getElementById('btnAction');
-        const form = document.getElementById('form-container');
-        const success = document.getElementById('success-msg');
-        const card = document.getElementById('mainCard');
+        const cta = document.getElementById('cta-section');
+        const wrapper = document.getElementById('form-wrapper');
+        const title = document.getElementById('title');
 
-        // 1. Quand on clique sur le bouton, on montre le formulaire
         btn.onclick = function() {
-            form.style.display = 'block';
-            this.style.display = 'none';
-        };
-
-        // 2. RUSE : On détecte quand l'utilisateur a fini
-        // On surveille si l'utilisateur quitte la page ou si l'iframe change
-        // Comme on ne peut pas lire l'intérieur de l'iframe, on met un bouton "J'ai fini"
-        // Ou on attend 15 secondes après l'affichage pour montrer le tick automatiquement
-        
-        // Option la plus propre : Un bouton de fermeture qui montre le tick
-        document.getElementById('mj-iframe').onload = function() {
-            // Si le formulaire est déjà affiché et que l'iframe recharge (après validation)
-            if(form.style.display === 'block') {
-               // On pourrait détecter ici, mais Mailjet bloque souvent la lecture.
-            }
+            wrapper.style.display = 'block'; 
+            cta.style.display = 'none';      // Cache le bouton et le texte d'info
+            title.innerText = 'Inscription'; 
         };
     </script>
 
