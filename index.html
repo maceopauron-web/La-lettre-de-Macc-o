@@ -5,48 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter</title>
     <style>
-        /* Design global de la page */
+        /* Fond de la page */
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Dégradé moderne */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
+            background: #f4f7f6; /* Gris très clair pour faire ressortir le blanc */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        .container {
+        /* Le Rectangle Blanc (La Carte) */
+        .card {
+            background: #ffffff;
+            padding: 50px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Ombre pour donner du relief */
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px); /* Effet de verre flou */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            width: 90%;
-            max-width: 500px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid #e1e4e8;
         }
 
-        h1 { margin-bottom: 20px; font-weight: 300; }
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
 
-        /* Style du bouton moderne */
+        /* Le Bouton Stylisé */
         .btn-newsletter {
-            background-color: #ff4757; /* Rouge corail dynamique */
+            background-color: #2ecc71; /* Vert "Succès" plus pro */
             color: white;
             border: none;
-            padding: 18px 35px;
-            font-size: 1.2rem;
+            padding: 20px 40px;
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            transition: all 0.3s ease; /* Animation fluide */
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: transform 0.2s, background 0.3s;
+            width: 100%; /* Le bouton prend toute la largeur du rectangle */
         }
 
         .btn-newsletter:hover {
-            transform: translateY(-3px); /* Le
+            background-color: #27ae60;
+            transform: scale(1.02); /* Gross
