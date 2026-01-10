@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Premium</title>
+    <title>Ma Newsletter</title>
     <style>
         body {
             margin: 0;
@@ -11,23 +11,24 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a; /* Fond bleu nuit */
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .card {
             background: #ffffff;
-            padding: 40px;
-            border-radius: 24px;
+            padding: 40px 30px;
+            border-radius: 20px;
             text-align: center;
             width: 90%;
-            max-width: 450px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            max-width: 400px;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
         }
 
-        h1 { color: #1e293b; margin-bottom: 25px; font-size: 24px; }
-
+        /* Style du bouton (très visible) */
         .btn-newsletter {
+            display: block;
+            width: 100%;
             background: #2563eb;
             color: white;
             border: none;
@@ -36,27 +37,23 @@
             font-weight: bold;
             border-radius: 12px;
             cursor: pointer;
-            width: 100%;
             transition: 0.3s;
             text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .btn-newsletter:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .btn-newsletter:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
 
-        /* Le texte d'information sous le bouton */
-        .info-mail {
-            margin-top: 15px;
+        /* Texte sous le bouton */
+        .info-text {
             font-size: 14px;
             color: #64748b;
-            line-height: 1.4;
+            line-height: 1.5;
+            margin: 0;
         }
 
-        #form-container {
-            display: none;
-            width: 100% !important;
-            margin-top: 20px;
-        }
-
-        iframe {
-            width: 100% !important;
-            height: 500px;
+        /* Le conteneur du formulaire
+        
