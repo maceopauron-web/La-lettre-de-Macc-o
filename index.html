@@ -1,54 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter</title>
+    <title>Mon Formulaire</title>
     <style>
-        /* Fond de la page */
-        body {
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #f4f7f6; /* Gris très clair pour faire ressortir le blanc */
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+        body { text-align: center; padding: 50px; font-family: sans-serif; }
+        .mon-bouton { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 20px; }
+        #mon-form { display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
 
-        /* Le Rectangle Blanc (La Carte) */
-        .card {
-            background: #ffffff;
-            padding: 50px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Ombre pour donner du relief */
-            text-align: center;
-            width: 100%;
-            max-width: 450px;
-            border: 1px solid #e1e4e8;
-        }
+    <button class="mon-bouton" id="btn">Accéder au formulaire</button>
 
-        h2 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 24px;
-        }
+    <div id="mon-form">
+        <iframe src="https://1175v.mjt.lu/wgt/1175v/0zq7/form?c=59751c8a" width="100%" height="600px" frameborder="0"></iframe>
+    </div>
 
-        /* Le Bouton Stylisé */
-        .btn-newsletter {
-            background-color: #2ecc71; /* Vert "Succès" plus pro */
-            color: white;
-            border: none;
-            padding: 20px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            width: 100%; /* Le bouton prend toute la largeur du rectangle */
+    <script src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+    <script>
+        document.getElementById('btn').onclick = function() {
+            document.getElementById('mon-form').style.display = 'block';
+            this.style.display = 'none';
         }
-
-        .btn-newsletter:hover {
-            background-color: #27ae60;
-            transform: scale(1.02); /* Gross
+    </script>
+</body>
+</html>
