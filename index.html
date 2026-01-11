@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter</title>
+    <title>La Lettre De Macéo | Inscription</title>
     <style>
-        /* Design global de la page */
+        /* Design inspiré de la Finance & Économie */
         body {
             margin: 0;
             padding: 0;
@@ -13,104 +13,46 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
+            /* Fond bleu très clair rappelant le header de ta newsletter */
+            background-color: #e7f5ff; 
+            background-image: radial-gradient(at 0% 0%, hsla(205,100%,90%,1) 0, transparent 50%), 
+                              radial-gradient(at 50% 0%, hsla(205,100%,85%,1) 0, transparent 50%);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #131b20;
         }
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             width: 90%;
-            max-width: 500px;
+            max-width: 480px;
         }
 
-        h1 { margin-bottom: 20px; font-weight: 300; }
-
-        /* Style du bouton moderne */
-        .btn-newsletter {
-            background-color: #ff4757;
+        .badge {
+            background: #131b20;
             color: white;
-            border: none;
-            padding: 18px 35px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 6px 15px;
             border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
             letter-spacing: 1px;
-            width: 100%;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
-        .btn-newsletter:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
-            background-color: #ff6b81;
+        h1 { 
+            margin: 0 0 15px 0; 
+            font-size: 28px;
+            font-weight: 800;
+            color: #131b20;
         }
 
-        /* Message d'info sous le bouton */
-        .info-mail {
-            margin-top: 20px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.4;
-        }
-
-        /* Conteneur du formulaire caché */
-        #form-wrapper {
-            display: none;
-            margin-top: 20px;
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100% !important;
-            min-width: 100% !important;
-            border: none;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1 id="title">Restez informé !</h1>
-        
-        <div id="cta-section">
-            <button class="btn-newsletter" id="btnAction">S'abonner à la newsletter</button>
-            <p class="info-mail">
-                Vous allez recevoir un mail, cliquez sur <strong>confirmer</strong> pour valider votre inscription.
-            </p>
-        </div>
-
-        <div id="form-wrapper">
-            <iframe data-w-type="embedded" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://1175v.mjt.lu/wgt/1175v/0zrm/form?c=ac70ec91" width="100%" style="height: 550px;"></iframe>
-        </div>
-    </div>
-
-    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
-    
-    <script>
-        const btn = document.getElementById('btnAction');
-        const cta = document.getElementById('cta-section');
-        const wrapper = document.getElementById('form-wrapper');
-        const title = document.getElementById('title');
-
-        btn.onclick = function() {
-            wrapper.style.display = 'block'; 
-            cta.style.display = 'none';      // Cache le bouton et le texte d'info
-            title.innerText = 'Inscription'; 
-        };
-    </script>
-
-</body>
-</html>
+        .description {
+            color: #495A65;
+            font-size
