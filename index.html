@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Lettre De Macéo | Inscription</title>
+    <title>La Lettre De Macéo</title>
     <style>
-        /* Design inspiré de la Finance & Économie */
         body {
             margin: 0;
             padding: 0;
@@ -13,46 +12,71 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Fond bleu très clair rappelant le header de ta newsletter */
-            background-color: #e7f5ff; 
-            background-image: radial-gradient(at 0% 0%, hsla(205,100%,90%,1) 0, transparent 50%), 
-                              radial-gradient(at 50% 0%, hsla(205,100%,85%,1) 0, transparent 50%);
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #131b20;
+            background-color: #e7f5ff; /* Ton fond bleu ciel */
+            font-family: Arial, sans-serif;
         }
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 50px 40px;
-            border-radius: 24px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             width: 90%;
-            max-width: 480px;
+            max-width: 450px;
         }
 
-        .badge {
-            background: #131b20;
+        h1 { color: #131b20; margin-bottom: 10px; }
+        
+        p { color: #495A65; line-height: 1.5; margin-bottom: 30px; }
+
+        .btn-newsletter {
+            background-color: #131b20;
             color: white;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 12px;
+            border: none;
+            padding: 18px 30px;
+            font-size: 1rem;
             font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: inline-block;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
         }
 
-        h1 { 
-            margin: 0 0 15px 0; 
-            font-size: 28px;
-            font-weight: 800;
-            color: #131b20;
+        .btn-newsletter:hover { background-color: #2c3e50; }
+
+        #form-wrapper {
+            display: none; /* Caché au début */
+            margin-top: 20px;
         }
 
-        .description {
-            color: #495A65;
-            font-size
+        iframe {
+            width: 100%;
+            border: none;
+            height: 550px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="cta-section">
+            <h1>La Lettre De Macéo</h1>
+            <p>Comprendre la Finance et l'Économie en 3 minutes par semaine.</p>
+            <button class="btn-newsletter" id="btnAction">S'abonner à la newsletter</button>
+        </div>
+
+        <div id="form-wrapper">
+            <iframe src="https://1175v.mjt.lu/wgt/1175v/0zrm/form?c=ac70ec91"></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnAction').onclick = function() {
+            document.getElementById('form-wrapper').style.display = 'block';
+            document.getElementById('cta-section').style.display = 'none';
+        };
+    </script>
+
+</body>
+</html>
